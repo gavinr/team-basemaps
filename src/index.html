@@ -1,29 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"
-  />
-  <title>Vector tiles - 4.0</title>
-  <style>
-    html,
-    body,
-    #viewDiv {
-      padding: 0;
-      margin: 0;
-      height: 100%;
-      width: 100%;
-    }
-  </style>
-
-  <link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css">
-  <script src="https://js.arcgis.com/4.0/"></script>
-
-  <script src="js/main.js"></script>
-</head>
-<body>
-  <select id="teamsSelect"></select>
-  <div id="viewDiv"></div>
-</body>
+  <head>
+    <title>team-basemaps</title>
+    <!-- build:css app.css -->
+    <link rel="stylesheet" type="text/css" href="app/styles/main.css"/>
+    <!-- /build -->
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0 maximum-scale=1.0">
+    <!-- build:remove -->
+    <script src="//localhost:35729/livereload.js"></script>
+    <script src="dojoConfig.js"></script>
+    <!-- /build -->
+  </head>
+  <body>
+    <div id="app-container"></div>
+    <!-- build:js app.js -->
+    <script src="dojo/dojo.js"></script>
+    <!-- /build -->
+  </body>
 </html>
