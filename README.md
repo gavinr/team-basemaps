@@ -20,3 +20,7 @@ http://localhost:8282/dist
 
 ## Run tests
 http://localhost:8282/node_modules/intern/client.html?config=tests/intern
+
+## Thanks
+
+* [generator-arcgis-js-app](https://github.com/odoe/generator-arcgis-js-app) project. Thanks @odoe!
