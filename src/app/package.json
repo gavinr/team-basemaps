@@ -1,0 +1,8 @@
+{
+  "name": "team-basemaps",
+  "version": "1.0.0",
+  "main": "main",
+  "description": "Basemap themes for professional sports teams",
+  "homepage": "",
+  "dojoBuild": "app.profile.js"
+}
