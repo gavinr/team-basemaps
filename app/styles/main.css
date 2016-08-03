@@ -1,0 +1,19 @@
+@import url(../../esri/css/main.css);
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0; }
+  html .view-div,
+  body .view-div {
+    height: 100%; }
+
+.item-container {
+  background: #fff;
+  width: 250px; }
+
+.esri-ui .esri-attribution {
+  left: initial; }
+
+/*# sourceMappingURL=main.css.map */
