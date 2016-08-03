@@ -1,7 +1,6 @@
 import MapView from 'esri/views/MapView';
 
 import { addWidgets } from './widgets';
-import store from '../stores/app';
 
 function createElement(node) {
   const elem = document.createElement('div');
@@ -20,8 +19,6 @@ function create({ params, node }) {
   const elem = createElement(node);
   const view = createMapView(params, elem);
   view.then(addWidgets);
-  store.view = view;
-  store.webmap = params.map;
   return view;
 }
 

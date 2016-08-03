@@ -6,8 +6,8 @@ import {
   layerInfo
 } from './config';
 
-import view from './components/webmap';
-// import dataList from './components/datalist';
+import webmap from './components/webmap';
+import dataList from './components/datalist';
 
 const mainLayer = new VectorTileLayer(layerInfo);
 mapOptions.layers = [mainLayer];
@@ -15,9 +15,12 @@ mapOptions.layers = [mainLayer];
 const map = new Map(mapOptions);
 mapViewOptions.map = map;
 
-// dataList.create();
 
-view.create({
+const view = webmap.create({
   params: mapViewOptions,
   node: document.body
+});
+
+view.then(() => {
+  dataList.create(view, mainLayer);
 });

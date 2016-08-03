@@ -116,7 +116,7 @@ module.exports = function (grunt) {
           'robots.txt', 'crossdomain.xml',
           'app/app.profile.js', 'app/package.json',
           'app/templates/*.html', 'app/components/**/templates/*.html',
-          'app/**/**/nls/*.js'
+          'app/**/**/nls/*.js', 'app/resources/**'
         ],
         dest: 'dist/',    // destination folder
         expand: true           // required when using cwd
@@ -140,12 +140,12 @@ module.exports = function (grunt) {
         dest: 'release/',
         expand: true
       },
-    
+
       releasevtiles: {
         src: 'built/esri/views/2d/layers/vector-tile.js',
         dest: 'release/vector-tile.js'
       },
-    
+
       releaseapp: {
         src: 'built/dojo/dojo.js',
         dest: 'release/app.js'
@@ -159,7 +159,7 @@ module.exports = function (grunt) {
         src: 'built/dojo/resources/blank.gif',
         dest: 'release/resources/blank.gif'
       },
-    
+
       // need these images for basemaptoggle
       releasetopo: {
         src: 'built/esri/images/basemap/topo.jpg',
@@ -176,7 +176,7 @@ module.exports = function (grunt) {
         src: 'built/esri/widgets/Search/images/search-symbol-32.png',
         dest: 'release/resources/esri/images/search-symbol-32.png'
       },
-    
+
       moment: {
         cwd: 'built/',
         src: [
@@ -189,7 +189,7 @@ module.exports = function (grunt) {
         expand: true
       }
     },
-    
+
     // This is getting hardcore to change where images come from
     // for basemap toggle
     'string-replace': {
@@ -217,7 +217,7 @@ module.exports = function (grunt) {
         }
       }
     },
-    
+
     processhtml: {
       dist: {
         files: {
@@ -251,7 +251,7 @@ module.exports = function (grunt) {
       }
     },
     watch: {
-      
+
       styles: {
         files: [
           'src/app/styles/*.scss'
@@ -261,7 +261,7 @@ module.exports = function (grunt) {
           livereload: true,
         }
       },
-      
+
       js: {
         files: [
           'src/app/*.js', 'src/app/**/*.js',
@@ -319,10 +319,10 @@ module.exports = function (grunt) {
     'shell:dojo', 'processhtml', 'cssurlcopy',
     'copy:release', 'copy:releaseapp', 'copy:releasevtiles',
     'copy:releaseblank', 'copy:releaseconfig',
-    
+
     'copy:releasetopo', 'copy:releasehybrid', 'copy:releasesearch',
     'string-replace',
-    
+
     'cacheBust', 'copy:moment']);
   grunt.registerTask('build', ['default', 'clean:built', 'copy:build', 'shell:dojo', 'processhtml']);
   grunt.registerTask('initialize', ['default']);
