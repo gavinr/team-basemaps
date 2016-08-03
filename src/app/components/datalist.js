@@ -1,4 +1,4 @@
-import teamColors from 'dojo/text!https://cdn.rawgit.com/teamcolors/teamcolors.github.io/master/src/scripts/data/leagues/nhl.json';
+import teamColors from 'dojo/text!../resources/teams.json';
 import baseStyleText from 'dojo/text!../resources/baseStyle.json.txt';
 import dom from 'dojo/dom';
 import domConstruct from 'dojo/dom-construct';
