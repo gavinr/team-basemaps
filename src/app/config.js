@@ -1,8 +1,8 @@
 export const mapOptions = {};
 
 export const mapViewOptions = {
-  center: [-100, 37],
-  zoom: 4,
+  center: [0,0],
+  zoom: 2,
   ui: {
     components: ['zoom', 'attribution']
   }
