@@ -8,17 +8,21 @@ function create(view, tileLyr) {
     const container = document.createElement('div');
     container.classList.add('item-container');
     const elemList = document.createElement('select');
-    elemList.setAttribute('id', 'teamsSelect');
     elemList.classList.add('esri-widget', 'item-list');
     container.appendChild(elemList);
     view.ui.add(elemList, 'top-right');
 
     const baseStyle = JSON.parse(baseStyleText);
     const tc = JSON.parse(teamColors);
-    populateDropdown(dom.byId('teamsSelect'), tc);
-    on(dom.byId('teamsSelect'), 'change', (evt) => {
+    populateDropdown(elemList, tc);
+    on(elemList, 'change', (evt) => {
       tileLyr.loadStyle(getNewStyle(baseStyle, tc[evt.target.value].colors.hex));
     });
+
+    // select random team on load:
+    const initialIndex = Math.floor(Math.random() * elemList.length);
+    console.log('ii', initialIndex);
+    elemList.selectedIndex = initialIndex;
 }
 
 var populateDropdown = function(dropdown, teamColorsArray) {
