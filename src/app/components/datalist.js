@@ -17,11 +17,19 @@ function create(view, tileLyr) {
     const tc = JSON.parse(teamColors);
     populateDropdown(dom.byId('teamsSelect'), tc);
     on(dom.byId('teamsSelect'), 'change', (evt) => {
-      tileLyr.loadStyle(getNewStyle(baseStyle, tc[evt.target.value].colors.hex));
+      if(evt.target.value !== -1) {
+        tileLyr.loadStyle(getNewStyle(baseStyle, tc[evt.target.value].colors.hex));
+      }
     });
 }
 
 var populateDropdown = function(dropdown, teamColorsArray) {
+    // set an initial version for now, until we can get the layer loaded event.
+    var opt = domConstruct.create('option', {
+        innerHTML: '&#8681; Change me! &#8681;',
+        value: -1
+    });
+    dropdown.add(opt);
     teamColorsArray.forEach((team, i) => {
         var opt = domConstruct.create('option', {
             innerHTML: team.name,
