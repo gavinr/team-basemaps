@@ -1,5 +1,6 @@
 import Map from 'esri/Map';
 import VectorTileLayer from 'esri/layers/VectorTileLayer';
+// import watchUtils from 'esri/core/watchUtils';
 import {
   mapOptions,
   mapViewOptions,
@@ -21,6 +22,10 @@ const view = webmap.create({
   node: document.body
 });
 
+
+
 view.then(() => {
-  dataList.create(view, mainLayer);
+  mainLayer.on('layerview-create', () => {
+    dataList.create(view, mainLayer);
+  });
 });
