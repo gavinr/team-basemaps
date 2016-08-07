@@ -1,7 +1,7 @@
 # team-basemaps
 Basemap styles for all your favorite sports teams! [View now](https://gavinr.github.io/team-basemaps/)
 
-[![City Flags Map Screenshot](https://i.imgur.com/Wh0EKcW.jpg)](https://gavinr.github.io/team-basemaps/)
+[![Team Basemaps Screenshot](https://i.imgur.com/Wh0EKcW.jpg)](https://gavinr.github.io/team-basemaps/)
 
 [![Build Status](https://travis-ci.org/gavinr/team-basemaps.svg?branch=master)](https://travis-ci.org/gavinr/team-basemaps)
 [![Dependencies Status](https://david-dm.org/gavinr/team-basemaps.svg)](https://david-dm.org/gavinr/team-basemaps)
