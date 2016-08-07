@@ -17,6 +17,9 @@ html, body, #app, .map-container {
 .esri-ui .esri-attribution {
   left: auto;
 }
+.esri-attribution__sources {
+  padding: 0px;
+}
 
 /* components */
 @import './StyleChooser';

@@ -24,14 +24,29 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     this.inherited(arguments);
     this.populateSelect(this.styleSelect, teamColors);
     on(this.styleSelect, 'change', (evt) => {
+      this.currentPermutations = this.getAllPermutations(teamColors[evt.target.value].colors.hex);
+      this.currentPermutationIndex = 0;
       if (evt.target.value !== -1) {
         this.tileLayer.loadStyle(
           this.getNewStyle(
             baseStyleFile,
-            teamColors[evt.target.value].colors.hex
+            this.currentPermutations[this.currentPermutationIndex]
           )
         );
       }
+    });
+
+    on(this.randomizeColorsButton, 'click', () => {
+      this.currentPermutationIndex = this.currentPermutationIndex + 1;
+      if (this.currentPermutationIndex === this.currentPermutations.length) {
+        this.currentPermutationIndex = 0;
+      }
+      this.tileLayer.loadStyle(
+        this.getNewStyle(
+          baseStyleFile,
+          this.currentPermutations[this.currentPermutationIndex]
+        )
+      );
     });
   },
 
@@ -113,5 +128,26 @@ export default declare([_WidgetBase, _TemplatedMixin], {
 
     }
     return retStyle;
+  },
+
+  getAllPermutations(input) {
+    this.permArr = [];
+    this.usedChars = [];
+    const returnPermutation = this.permute(input);
+    return returnPermutation;
+  },
+  // http://stackoverflow.com/questions/9960908/permutations-in-javascript
+  permute(input) {
+    for (let i = 0; i < input.length; i++) {
+      const ch = input.splice(i, 1)[0];
+      this.usedChars.push(ch);
+      if (input.length === 0) {
+        this.permArr.push(this.usedChars.slice());
+      }
+      this.permute(input);
+      input.splice(i, 0, ch);
+      this.usedChars.pop();
+    }
+    return this.permArr;
   }
 });
