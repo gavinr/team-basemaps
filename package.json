@@ -35,11 +35,19 @@
     "build": "gulp",
     "start": "gulp serve"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gavinr/team-basemaps.git"
+  },
   "keywords": [
     "basemaps",
     "sports",
-    "vector"
+    "vector-basemaps"
   ],
   "author": "Gavin Rehkemper <gavin@gavinr.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gavinr/team-basemaps/issues"
+  },
+  "homepage": "https://github.com/gavinr/team-basemaps#readme"
 }
