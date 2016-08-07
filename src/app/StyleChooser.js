@@ -58,7 +58,9 @@ export default declare([_WidgetBase, _TemplatedMixin], {
       if (colorArray.length > 0) {
         // do background
         const backgroundLayers = retStyle.layers.filter((layer) => {
-          if (layer.id.indexOf('background') > -1 || layer.id.indexOf('Water area') > -1) {
+          if (layer.id.indexOf('background') > -1 ||
+            layer.id.indexOf('Water area') > -1 ||
+            layer.id.indexOf('Marine area') > -1) {
             return true;
           }
           return false;
