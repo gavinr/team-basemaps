@@ -5338,13 +5338,20 @@ html, body, #app, .map-container {
   left: auto;
 }
 
+.esri-attribution__sources {
+  padding: 0px;
+}
+
 /* components */
 .style-chooser {
   position: absolute;
   top: 15px;
   right: 15px;
-  width: 300px;
   z-index: 1;
+}
+
+.style-chooser button .glyphicon {
+  font-size: 13px;
 }
 
 /*# sourceMappingURL=main.css.map */
