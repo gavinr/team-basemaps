@@ -1,5 +1,5 @@
 export default {
-  "glyphs": "http://www.arcgis.com/sharing/rest/content/items/850db44b9eb845d3bd42b19e8aa7a024/resources/styles/../fonts/{fontstack}/{range}.pbf",
+  "glyphs": "https://www.arcgis.com/sharing/rest/content/items/850db44b9eb845d3bd42b19e8aa7a024/resources/styles/../fonts/{fontstack}/{range}.pbf",
   "version": 8,
   "sources": {
     "esri": {
@@ -7477,5 +7477,5 @@ export default {
       }
     }
   ],
-  "sprite": "http://www.arcgis.com/sharing/rest/content/items/850db44b9eb845d3bd42b19e8aa7a024/resources/styles/../sprites/sprite"
+  "sprite": "https://www.arcgis.com/sharing/rest/content/items/850db44b9eb845d3bd42b19e8aa7a024/resources/styles/../sprites/sprite"
 };
