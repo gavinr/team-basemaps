@@ -1,13 +1,9 @@
-export const mapOptions = {};
-
-export const mapViewOptions = {
-  center: [0,0],
-  zoom: 2,
-  ui: {
-    components: ['zoom', 'attribution']
+export default {
+  mapProps: {
+    center: [0, 0],
+    zoom: 2
+  },
+  vectorLayerProps: {
+    url: 'https://basemaps.arcgis.com/b2/arcgis/rest/services/World_Basemap/VectorTileServer'
   }
-};
-
-export const layerInfo = {
-  url: 'https://basemaps.arcgis.com/b2/arcgis/rest/services/World_Basemap/VectorTileServer'
 };

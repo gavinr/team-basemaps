@@ -1,0 +1,22 @@
+/* load calcite variables as overrides */
+@import 'calcite-bootstrap';
+/* set the output folder for fonts */
+$icon-font-path: './fonts/';
+
+// contains only the bootstrap modules used in this app
+@import 'appstrap';
+
+/* app layout */
+html, body, #app, .map-container {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: block;
+}
+
+.esri-ui .esri-attribution {
+  left: auto;
+}
+
+/* components */
+@import './StyleChooser';

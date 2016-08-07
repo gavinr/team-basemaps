@@ -1,4 +1,4 @@
-{
+export default {
   "glyphs": "http://www.arcgis.com/sharing/rest/content/items/850db44b9eb845d3bd42b19e8aa7a024/resources/styles/../fonts/{fontstack}/{range}.pbf",
   "version": 8,
   "sources": {
@@ -7478,4 +7478,4 @@
     }
   ],
   "sprite": "http://www.arcgis.com/sharing/rest/content/items/850db44b9eb845d3bd42b19e8aa7a024/resources/styles/../sprites/sprite"
-}
+};
