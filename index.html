@@ -2,20 +2,38 @@
 <html>
   <head>
     <title>Team Basemaps</title>
-    <!-- build:css app.css -->
-    <link rel="stylesheet" type="text/css" href="app/styles/main.css"/>
-    <!-- /build -->
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="initial-scale=1.0 maximum-scale=1.0">
-    <!-- build:remove -->
-    <script src="//localhost:35729/livereload.js"></script>
-    <script src="dojoConfig.js"></script>
-    <!-- /build -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- esri styles required for map -->
+    <link rel="stylesheet" href="https://js.arcgis.com/4.0/esri/css/main.css">
+    <!-- built app and vendor styles -->
+    <link rel="stylesheet" href="styles/main.css">
   </head>
   <body>
-    <div id="app-container"></div>
-    <!-- build:js app.js -->
-    <script src="dojo/dojo.js"></script>
-    <!-- /build -->
+    <!-- app's root component -->
+    <div id="app"></div>
+    <script>
+      // define app as a dojo package
+      window.dojoConfig = {
+        packages: [
+          {
+            name: 'app',
+            location: window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/')) + '/app'
+          }
+        ]
+      }
+    </script>
+    <!-- load bundled and minified vendor scripts -->
+    <script src="vendor/vendor.min.js"></script>
+    <!-- load ArcGIS API for JavaScript from CDN -->
+    <script src="https://js.arcgis.com/4.0/"></script>
+    <script>
+      // load and run bundled and minified app code
+      // this includes sourcemaps for debugging
+      require(['app/App.min'], function(App) {
+        // initialize app to global var for debugging
+        window.app = new App({}, 'app');
+        window.app.startup();
+      });
+    </script>
   </body>
 </html>
