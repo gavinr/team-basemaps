@@ -65,7 +65,7 @@ module.exports = {
         "lines-around-comment": "error",
         "max-depth": "error",
         "max-len": "off",
-        "max-lines": "error",
+        "max-lines": "warn",
         "max-nested-callbacks": "error",
         "max-params": "error",
         "max-statements": "warn",
