@@ -23,7 +23,7 @@ export default declare([], {
     esriId.getCredential(`${this.info.portalUrl}/sharing`).then((credential) => {
       this._createVectorItem({
         title: `${team} Vector Basemap Layer`,
-        url: 'http://basemaps.arcgis.com/b2/arcgis/rest/services/World_Basemap/VectorTileServer',
+        url: 'https://basemaps.arcgis.com/b2/arcgis/rest/services/World_Basemap/VectorTileServer',
         tags: 'basemap,esri_basemap,vector,style,canvas,esri_vector,beta',
         snippet: `Basemap with colors in the style of the ${team}`,
         description: 'Basemap created from https://github.com/gavinr/team-basemaps/',
@@ -49,14 +49,14 @@ export default declare([], {
  * @return {none} none
  */
   _createVectorItem(postOptions, styleJson, userId) {
-    esriRequest(`http://arcgis.com/sharing/rest/content/users/${userId}/addItem`, {
+    esriRequest(`https://arcgis.com/sharing/rest/content/users/${userId}/addItem`, {
       method: 'post',
       responseType: 'json',
       query: postOptions
     }).then((response) => {
       // add the root.json to the item:
       if (response && response.data && response.data.success && response.data.id) {
-        esriRequest(`http://arcgis.com/sharing/rest/content/users/${userId}/items/${response.data.id}/addResources`, {
+        esriRequest(`https://arcgis.com/sharing/rest/content/users/${userId}/items/${response.data.id}/addResources`, {
           method: 'post',
           responseType: 'json',
           query: {
@@ -67,7 +67,7 @@ export default declare([], {
             text: JSON.stringify(styleJson)
           }
         }).then(() => {
-          swal('Basemap added to your account!', `Item with title "${postOptions.title}" was added to your ArcGIS Online account. <a href="http://gavinr.maps.arcgis.com/home/webmap/viewer.html?layers=${response.data.id}" target="_blank">Click here</a> to see it on a map right now.`, 'success');
+          swal('Basemap added to your account!', `Item with title "${postOptions.title}" was added to your ArcGIS Online account. <a href="https://arcgis.com/home/webmap/viewer.html?layers=${response.data.id}" target="_blank">Click here</a> to see it on a map right now.`, 'success');
         }, (err) => {
           console.error('error with addResources', err);
           swal('Oops...', 'Something went wrong! Please try again later.', 'error');
