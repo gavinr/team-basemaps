@@ -19,5 +19,6 @@ Basemap styles for all your favorite sports teams! [View now](https://gavinr.git
 
 * [esri-rollup-example](https://github.com/tomwayson/esri-rollup-example) project. Thanks @tomwayson!
 * [teamcolors.github.io](https://github.com/teamcolors/teamcolors.github.io) for team colors. Thanks!
+* [sweetalert2](https://github.com/limonte/sweetalert2) for modals. Thanks!
 * [Esri Vector Layers](https://doc.arcgis.com/en/arcgis-online/reference/vector-tile-layers.htm) - more info on vector tile layers
 * [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/) - new 4.0 API allows working with vector tile layers.

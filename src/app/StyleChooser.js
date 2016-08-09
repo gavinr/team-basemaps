@@ -7,6 +7,9 @@ import baseStyleFile from './resources/baseStyle';
 import strings from 'dojo/i18n!./nls/strings';
 import domConstruct from 'dojo/dom-construct';
 import on from 'dojo/on';
+import AgolUtils from './agol';
+import clone from '../../node_modules/lodash-es/cloneDeep';
+
 
 export default declare([_WidgetBase, _TemplatedMixin], {
 
@@ -24,12 +27,16 @@ export default declare([_WidgetBase, _TemplatedMixin], {
     this.inherited(arguments);
     this.populateSelect(this.styleSelect, teamColors);
     on(this.styleSelect, 'change', (evt) => {
-      this.currentPermutations = this.getAllPermutations(teamColors[evt.target.value].colors.hex);
-      this.currentPermutationIndex = 0;
-      if (evt.target.value !== -1) {
+      // if we are on the first (blank) item, disable. otherwise enable
+      if (evt.target.value == -1) { // eslint-disable-line
+        this.addToArcgisAccount.disabled = true;
+      } else {
+        this.addToArcgisAccount.disabled = false;
+        this.currentPermutations = this.getAllPermutations(teamColors[evt.target.value].colors.hex);
+        this.currentPermutationIndex = 0;
         this.tileLayer.loadStyle(
           this.getNewStyle(
-            baseStyleFile,
+            clone(baseStyleFile),
             this.currentPermutations[this.currentPermutationIndex]
           )
         );
@@ -43,10 +50,21 @@ export default declare([_WidgetBase, _TemplatedMixin], {
       }
       this.tileLayer.loadStyle(
         this.getNewStyle(
-          baseStyleFile,
+          clone(baseStyleFile),
           this.currentPermutations[this.currentPermutationIndex]
         )
       );
+    });
+
+    on(this.addToArcgisAccount, 'click', () => {
+      const teamName = this.styleSelect.options[parseInt(this.styleSelect.value, 10) + 1].innerHTML;
+      if (!this.agolUtils) {
+        this.agolUtils = new AgolUtils('FyzA1FOhv2AroUpG');
+      }
+      this.agolUtils.saveTileBasemap(this.getNewStyle(
+        clone(baseStyleFile),
+        this.currentPermutations[this.currentPermutationIndex]
+      ), teamName);
     });
   },
 

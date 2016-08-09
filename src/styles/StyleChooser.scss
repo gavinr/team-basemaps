@@ -6,4 +6,7 @@
   button .glyphicon {
     font-size: 13px;
   }
+  button:disabled .glyphicon {
+    color: $gray-light;
+  }
 }
