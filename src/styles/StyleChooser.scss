@@ -3,6 +3,7 @@
   top: 15px;
   right: 15px;
   z-index: 1;
+  max-width: 70%;
   button .glyphicon {
     font-size: 13px;
   }
@@ -10,3 +11,15 @@
     color: $gray-light;
   }
 }
+
+@media (max-device-width: 480px) {
+    .style-chooser {
+      text-align: right;
+      select {
+        width: 100%;
+      }
+      button {
+        margin-top: 10px;
+      }
+    }
+  }
