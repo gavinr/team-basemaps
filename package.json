@@ -12,6 +12,7 @@
     "babel-preset-es2015-rollup": "^1.1.1",
     "browser-sync": "^2.12.3",
     "calcite-bootstrap": "^0.3.2",
+    "carto-quick": "^0.1.0",
     "del": "^2.2.0",
     "eslint": "^3.2.2",
     "gulp": "^3.9.1",

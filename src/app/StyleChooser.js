@@ -9,7 +9,7 @@ import domConstruct from 'dojo/dom-construct';
 import on from 'dojo/on';
 import AgolUtils from './agol';
 import clone from '../../node_modules/lodash-es/cloneDeep';
-
+import CartoQuick from '../../node_modules/carto-quick/src/index';
 
 export default declare([_WidgetBase, _TemplatedMixin], {
 
@@ -35,9 +35,9 @@ export default declare([_WidgetBase, _TemplatedMixin], {
         this.currentPermutations = this.getAllPermutations(teamColors[evt.target.value].colors.hex);
         this.currentPermutationIndex = 0;
         this.tileLayer.loadStyle(
-          this.getNewStyle(
-            clone(baseStyleFile),
-            this.currentPermutations[this.currentPermutationIndex]
+          CartoQuick.getStyle(
+            this.currentPermutations[this.currentPermutationIndex],
+            clone(baseStyleFile)
           )
         );
       }
@@ -49,9 +49,9 @@ export default declare([_WidgetBase, _TemplatedMixin], {
         this.currentPermutationIndex = 0;
       }
       this.tileLayer.loadStyle(
-        this.getNewStyle(
-          clone(baseStyleFile),
-          this.currentPermutations[this.currentPermutationIndex]
+        CartoQuick.getStyle(
+          this.currentPermutations[this.currentPermutationIndex],
+          clone(baseStyleFile)
         )
       );
     });
@@ -61,9 +61,9 @@ export default declare([_WidgetBase, _TemplatedMixin], {
       if (!this.agolUtils) {
         this.agolUtils = new AgolUtils('FyzA1FOhv2AroUpG');
       }
-      this.agolUtils.saveTileBasemap(this.getNewStyle(
-        clone(baseStyleFile),
-        this.currentPermutations[this.currentPermutationIndex]
+      this.agolUtils.saveTileBasemap(CartoQuick.getStyle(
+        this.currentPermutations[this.currentPermutationIndex],
+        clone(baseStyleFile)
       ), teamName);
     });
   },
@@ -82,70 +82,6 @@ export default declare([_WidgetBase, _TemplatedMixin], {
         value: index
       }));
     });
-  },
-
-  getNewStyle(baseStyle, colorArray) {
-    var retStyle = Object.assign({}, baseStyle);
-    if (retStyle && retStyle.hasOwnProperty('layers')) {
-
-      if (colorArray.length > 0) {
-        // do background
-        const backgroundLayers = retStyle.layers.filter((layer) => {
-          if (layer.id.indexOf('background') > -1 ||
-            layer.id.indexOf('Water area') > -1 ||
-            layer.id.indexOf('Marine area') > -1) {
-            return true;
-          }
-          return false;
-        });
-
-        backgroundLayers.forEach((backgroundLayer) => {
-          if (backgroundLayer.paint.hasOwnProperty('background-color')) {
-            backgroundLayer.paint['background-color'] = `#${colorArray[0]}`;
-          }
-          if (backgroundLayer.paint.hasOwnProperty('fill-color')) {
-            backgroundLayer.paint['fill-color'] = `#${colorArray[0]}`;
-          }
-        });
-      }
-
-      if (colorArray.length > 1) {
-        // do land
-        const landLayers = retStyle.layers.filter((layer) => {
-          if (layer.id === 'Land') {
-            return true;
-          }
-          return false;
-        });
-
-        landLayers.forEach((landLayer) => {
-          if (landLayer.paint.hasOwnProperty('fill-color')) {
-            landLayer.paint['fill-color'] = `#${colorArray[1]}`;
-          }
-        });
-      }
-
-      if (colorArray.length > 2) {
-        // do other
-        const otherLayers = retStyle.layers.filter((layer) => {
-          if (layer.id.indexOf('Building/General') > -1 || layer.id.indexOf('Railroad/2') > -1 || layer.id.indexOf('Railroad/1') > -1 || layer.id.indexOf('Urban area') > -1) {
-            return true;
-          }
-          return false;
-        });
-
-        otherLayers.forEach((otherLayer) => {
-          if (otherLayer.paint.hasOwnProperty('background-color')) {
-            otherLayer.paint['background-color'] = `#${colorArray[2]}`;
-          }
-          if (otherLayer.paint.hasOwnProperty('fill-color')) {
-            otherLayer.paint['fill-color'] = `#${colorArray[2]}`;
-          }
-        });
-      }
-
-    }
-    return retStyle;
   },
 
   getAllPermutations(input) {
